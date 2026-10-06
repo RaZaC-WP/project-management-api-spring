@@ -1,4 +1,4 @@
-package com.razac.projectmanagementapi.entity;
+package com.razac.projectmanagementapi.task.domain;
 
 public enum TaskStatus {
     PENDING,

@@ -1,4 +1,4 @@
-package com.razac.projectmanagementapi.entity;
+package com.razac.projectmanagementapi.employee.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -6,9 +6,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "employees")
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Employee {
 
     @Id
@@ -24,8 +29,17 @@ public class Employee {
     @Column(nullable = false, length = 100)
     private String position;
 
-    public Employee() {
+    public Employee(String fullName, String email, String position) {
+        assign(fullName, email, position);
     }
 
-    // getters and setters
+    public void update(String fullName, String email, String position) {
+        assign(fullName, email, position);
+    }
+
+    private void assign(String fullName, String email, String position) {
+        this.fullName = fullName;
+        this.email = email;
+        this.position = position;
+    }
 }
